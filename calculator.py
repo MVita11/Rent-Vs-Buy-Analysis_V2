@@ -43,3 +43,22 @@ def calculate_detailed(property_price: float, deposit: float, annual_rate: float
     maintenance_cost = property_price * maintenance_rate 
     total_buying_cost = upfront_costs
     total_rent_cost = 0
+
+    results = []    
+    
+    mortgage_balance = loan_amount 
+    monthly_interest_rate = annual_rate / 12
+    
+    for i in range(1, years + 1):    
+        
+        for month in range(12):
+            interest_payment = mortgage_balance * monthly_interest_rate
+            principal_payment = monthly_payment - interest_payment
+            mortgage_balance -= principal_payment
+            
+        total_buying_cost += ((monthly_payment + building_insurance) * 12) + maintenance_cost
+        total_rent_cost += monthly_rent * 12
+        property_price *= (1 + property_value_growth)
+        monthly_rent *= (1 + rent_growth)
+        deposit *= (1 + investment_return_on_deposit)
+        maintenance_cost = property_price * maintenance_rate
