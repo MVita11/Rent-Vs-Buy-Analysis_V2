@@ -34,3 +34,12 @@ def stamp_duty(purchase_price: float, first_time_buyer: bool = False):
             total += taxable_amount * rate["rate"]
     return total
 
+# Calculates the total cost of buying a property in detail
+def calculate_detailed(property_price: float, deposit: float, annual_rate: float, years: int, solicitor_fees: float, survey_fees: float, maintenance_rate: float, building_insurance: float, monthly_rent: float, property_value_growth: float, rent_growth: float, investment_return_on_deposit: float,first_time_buyer: bool = False):
+    loan_amount = property_price - deposit
+    monthly_payment = monthly_repayments(loan_amount, annual_rate, years)
+    duty = stamp_duty(property_price, first_time_buyer)
+    upfront_costs = duty + solicitor_fees + survey_fees
+    maintenance_cost = property_price * maintenance_rate 
+    total_buying_cost = upfront_costs
+    total_rent_cost = 0
