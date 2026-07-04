@@ -62,3 +62,14 @@ def calculate_detailed(property_price: float, deposit: float, annual_rate: float
         monthly_rent *= (1 + rent_growth)
         deposit *= (1 + investment_return_on_deposit)
         maintenance_cost = property_price * maintenance_rate
+    
+        results.append({
+            "year": i,
+            "total_buying_cost": total_buying_cost,
+            "total_rent_value": total_rent_cost,
+            "property_value": property_price,
+            "buyer_wealth": property_price - mortgage_balance,
+            "renter_wealth": deposit,
+        })
+    
+    return results
