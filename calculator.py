@@ -7,6 +7,7 @@ def monthly_repayments(principal : float, annual_rate: float, years: int) -> flo
 def stamp_duty(purchase_price: float, first_time_buyer: bool = False):
     
     # Normal stamp duty rates
+    
     rates = [
         {"min": 0, "max": 250000, "rate": 0.0},
         {"min": 250000, "max": 925000, "rate": 0.05},
@@ -15,18 +16,21 @@ def stamp_duty(purchase_price: float, first_time_buyer: bool = False):
     ]
 
     # First time buyer stamp duty rates
+    
     first_time_buyer_rates = [
         {"min": 0, "max": 300000, "rate": 0.0},
         {"min": 300000, "max": 500000, "rate": 0.05},
     ]
     
     # Checks if buyer is eligible for first time buyer rates
+    
     if first_time_buyer and purchase_price <= 500000:
         applicable_rates = first_time_buyer_rates
     else:
         applicable_rates = rates
         
     # Calculates the total stamp duty based on the applicable rates
+    
     total = 0.0
     for rate in applicable_rates:
         taxable_amount = min(purchase_price, rate["max"]) - rate["min"]
@@ -35,14 +39,16 @@ def stamp_duty(purchase_price: float, first_time_buyer: bool = False):
     return total
 
 # Calculates the total cost of buying a property in detail
-def calculate_detailed(property_price: float, deposit: float, annual_rate: float, years: int, solicitor_fees: float, survey_fees: float, maintenance_rate: float, building_insurance: float, monthly_rent: float, property_value_growth: float, rent_growth: float, investment_return_on_deposit: float,first_time_buyer: bool = False):
+
+def calculate_detailed(property_price: float, deposit: float, annual_rate: float, years: int, solicitor_fees: float, survey_fees: float, maintenance_rate: float, building_insurance: float, monthly_rent: float, property_value_growth: float, rent_growth: float, investment_return_on_deposit: float, mortgage_term: int, first_time_buyer: bool = False):
     loan_amount = property_price - deposit
-    monthly_payment = monthly_repayments(loan_amount, annual_rate, years)
+    monthly_payment = monthly_repayments(loan_amount, annual_rate, mortgage_term)
     duty = stamp_duty(property_price, first_time_buyer)
     upfront_costs = duty + solicitor_fees + survey_fees
     maintenance_cost = property_price * maintenance_rate 
     total_buying_cost = upfront_costs
     total_rent_cost = 0
+    mortgage_term = mortgage_term
 
     results = []    
     
@@ -66,7 +72,7 @@ def calculate_detailed(property_price: float, deposit: float, annual_rate: float
         results.append({
             "year": i,
             "total_buying_cost": total_buying_cost,
-            "total_rent_value": total_rent_cost,
+            "total_rent_cost": total_rent_cost,
             "property_value": property_price,
             "buyer_wealth": property_price - mortgage_balance,
             "renter_wealth": deposit,
