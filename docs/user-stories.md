@@ -2,7 +2,7 @@
 
 ## Core calculation
 - As a first-time buyer or renter, I want the system to compute total cost-to-occupy for both renting and buying so I can compare net cash flows over time.
-- As a user, I want the comparator to show totals at 5, 10, 15, 20, and 25 years so I can evaluate different planning horizons.
+- As a user, I want the comparator to show totals at 5, 10, 15, 20, 25, and 30 years so I can evaluate different planning horizons.
 - As a user, I want the calculation to include both one-off purchase costs and ongoing costs so I can see where money is spent.
 
 ## Assumptions
@@ -20,7 +20,7 @@
 - As a user, I want the AI to suggest local research (typical mortgage rates, local market trends) when I choose a location so I can refine inputs.
 
 ## Results
-- As a user, I want a one-line recommendation (Rent / Buy / Indeterminate) with confidence notes so I can act quickly.
+- As a user, I want a one-line recommendation (Rent / Buy) with confidence notes so I can act quickly.
 - As a user, I want a side-by-side numeric summary (cumulative costs, net equity, opportunity cost) for each horizon so I can compare alternatives.
 - As a user, I want clear graphs showing cumulative costs and break-even points so I can visualise when buying becomes preferable.
 
@@ -29,7 +29,6 @@
 - As a user, I want an export option (CSV/XLS) so I can run my own analyses in a spreadsheet.
 
 ## Non-functional / UX
-- As a user, I want the app to be mobile responsive so I can use it on my phone.
 - As a user, I want to save and reload scenarios (with an account) so I don't re-enter data and can compare locations.
 - As a user, I want input validation and friendly error messages so I don’t submit impossible scenarios.
 - As a user, I want reasonable performance for typical inputs so calculations and visualisations appear instantly.
